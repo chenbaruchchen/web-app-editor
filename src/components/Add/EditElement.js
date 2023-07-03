@@ -4,8 +4,7 @@ export default function EditElement(props) {
   const state = useContext(ElementContext);
   return (
     <div className="">
-      {props.elementChosen}{" "}
-      <CloseButton setElementChosen={props.setElementChosen} />
+      {state.element.type} <CloseButton />
     </div>
   );
 }
