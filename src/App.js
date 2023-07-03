@@ -1,18 +1,19 @@
-import { createContext } from "react";
+import { ElementContextProvider } from "./Context/ElementContext";
 
 import Add from "./components/Add/Add";
 import Display from "./components/Display/Display";
 
 export default function App(params) {
-  const LevelContext = createContext(1);
+  // const ElementContext = createContext(null);
 
   return (
-    <div className="flex ">
-      <Tree />
-      <Display />
-
-      <Add />
-    </div>
+    <ElementContextProvider>
+      <div className="flex ">
+        <Tree />
+        <Display />
+        <Add />
+      </div>
+    </ElementContextProvider>
   );
 }
 
