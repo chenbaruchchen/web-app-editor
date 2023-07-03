@@ -1,6 +1,11 @@
+import { createContext } from "react";
+
 import Add from "./components/Add/Add";
 import Display from "./components/Display/Display";
+
 export default function App(params) {
+  const LevelContext = createContext(1);
+
   return (
     <div className="flex ">
       <Tree />
