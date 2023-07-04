@@ -10,25 +10,16 @@ export default function Tree(params) {
 
   useEffect(() => {
     const root = {
-      element: new Element("div"),
-      key: shortid.generate()
+      element: new Element("div")
     };
     const treeRoot = new TreeClass(root);
     stateTree.setTree(treeRoot);
   }, []);
 
   function add() {
-    // const node = new TreeClass({
-    //   element: new Element("div"),
-    //   key: shortid.generate()
-    // });
-    // let newTree = { ...stateTree.tree };
-
-    // newTree.addChidToNodeByKey(node, newTree.value.key, newTree);
-    // stateTree.setTree(newTree);
     addNodeToTree(stateTree);
-    console.log(stateTree.tree);
   }
+
   return (
     <div className="w-1/5">
       <button
@@ -38,7 +29,15 @@ export default function Tree(params) {
       >
         s
       </button>
-
+      {"  "}de
+      <button
+        onClick={() => {
+          // stateTree.tree.printTree();
+          console.log(stateTree.tree);
+        }}
+      >
+        print tree
+      </button>
       <List tree={stateTree.tree} list={stateTree.tree.child} />
     </div>
   );

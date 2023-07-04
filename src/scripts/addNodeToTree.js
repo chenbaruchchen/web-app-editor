@@ -8,12 +8,11 @@ export default function addNodeToTree(stateTree, node, key) {
   node =
     node ||
     new TreeClass({
-      element: new Element("div"),
-      key: shortid.generate()
+      element: new Element("div")
     });
 
   let newTree = { ...stateTree.tree };
 
-  newTree.addChidToNodeByKey(node, key || newTree.value.key, newTree);
+  newTree.addChlidToNodeByKey(node, key || newTree.value.key, newTree);
   stateTree.setTree(newTree);
 }

@@ -4,7 +4,6 @@ import { ElementContext } from "../../Context/ElementContext";
 import { TreeContext } from "../../Context/TreeContext";
 export default function Display(props) {
   const state = useContext(ElementContext);
-  console.log(state);
   let element = state.element;
 
   return (
