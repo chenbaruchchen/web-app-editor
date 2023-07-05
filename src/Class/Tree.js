@@ -1,26 +1,39 @@
+import shortid from "shortid";
+
 export default class TreeNode {
   constructor(value) {
     this.value = value;
     this.child = [];
-    map[value.key] = this;
-    this.addChidToNodeByKey = (child, key, tree) => {
+    this.key = shortid.generate();
+    // map[value.key] = this;
+    this.addChlidToNodeByKey = (child, key, tree) => {
       let node = this.getNodeByKey(tree, key);
-      console.log(node, "node.child");
-      node.child = node.child.concat(child);
+      if (node) {
+        node.child = node?.child.concat(child);
+      } else {
+      }
       return node;
     };
   }
   getNodeByKey(root, key) {
-    console.log(root, key, ",root, key");
-
+    console.log("hellow");
+    let res = null;
+    let arr = [];
     function rec(root) {
-      if (root == null) return;
-      if (root.value.key === key) return root;
-      else {
+      if (root) {
+        if (root.key === key) {
+          res = root;
+          console.log(res, key, "isTruee");
+          return res;
+        }
+        arr.push(root.key);
         root.child.map((child) => rec(child));
       }
     }
-    return rec(root);
+    res = res || rec(root);
+    console.log(res, arr);
+
+    return res;
   }
 }
 

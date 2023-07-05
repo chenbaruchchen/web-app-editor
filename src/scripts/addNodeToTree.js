@@ -4,7 +4,11 @@ import Element from "../Class/Element";
 
 ///add to tree by add to the right node
 
-export default function addNodeToTree(stateTree, node, key) {
+export default function addNodeToTree(
+  stateTree,
+  node,
+  key = stateTree.tree.key
+) {
   node =
     node ||
     new TreeClass({
