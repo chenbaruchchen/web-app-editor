@@ -1,44 +1,30 @@
-import shortid from "shortid";
-import TreeClass from "../../Class/Tree";
-import { useEffect, useState, useContext } from "react";
+import TreeClass from "../../Class/TreeClass";
+import { TreeContext } from "../../Context/TreeContext";
+import { useContext, useEffect } from "react";
 import Element from "../../Class/Element";
 import addNodeToTree from "../../scripts/addNodeToTree";
-import { TreeContext } from "../../Context/TreeContext";
-import List from "./ListNode";
-export default function Tree(params) {
-  const stateTree = useContext(TreeContext);
-
+export default function Tree() {
+  const { tree, setTree } = useContext(TreeContext);
   useEffect(() => {
-    const root = {
-      element: new Element("div")
-    };
-    const treeRoot = new TreeClass(root);
-    stateTree.setTree(treeRoot);
+    const element = new Element();
+
+    const treeTemp = new TreeClass(element);
+
+    setTree(treeTemp);
   }, []);
 
-  function add() {
-    addNodeToTree(stateTree);
+  function addToRoot() {
+    const element = new Element();
+    // addNodeToTree(tree.root.key, element, { tree, setTree });
+    tree.insert(1, 11, "AC");
+    console.log(tree);
   }
-
+  console.log(tree);
   return (
     <div className="w-1/5">
-      <button
-        onClick={() => {
-          add();
-        }}
-      >
-        s
+      <button onClick={addToRoot} className="px-2 py-2">
+        add to root
       </button>
-      {"  "}de
-      <button
-        onClick={() => {
-          // stateTree.tree.printTree();
-          console.log(stateTree.tree);
-        }}
-      >
-        print tree
-      </button>
-      <List tree={stateTree.tree} list={stateTree.tree.child} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 class Element {
-  constructor(type) {
+  constructor(type = "div") {
     this.type = type;
     this.style = {};
   }

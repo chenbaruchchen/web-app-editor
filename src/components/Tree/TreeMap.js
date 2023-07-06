@@ -7,6 +7,7 @@ import addChildToNode from "../../scripts/addChildToNode";
 import { MapContext } from "../../Context/MapContext";
 import { useContext, useEffect } from "react";
 
+import TreeUi from "./treeUi";
 export default function TreeMap() {
   const mapContext = useContext(MapContext);
   useEffect(() => {
@@ -22,14 +23,21 @@ export default function TreeMap() {
   return (
     <div className="w-1/5">
       TreeMap
-      <button onClick={() => addNodeToMap(createNode(), mapContext)}>
+      <button className="p-2" onClick={() => console.log(mapContext.map)}>
+        print map
+      </button>
+      <button
+        className="p-2"
+        onClick={() => addNodeToMap(createNode(), mapContext)}
+      >
         addNodeToMap
       </button>
       {containers.map((node) => (
         <button onClick={() => addChildToNode(node, createNode(), mapContext)}>
-          node.addChild
+          {node.key}- node.addChild
         </button>
       ))}
+      <TreeUi map={mapContext.map} />
     </div>
   );
 }

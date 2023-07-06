@@ -1,21 +1,23 @@
 import { ElementContextProvider } from "./Context/ElementContext";
-import { MapContextProvider } from "./Context/MapContext";
+import { TreeContextProvider } from "./Context/TreeContext";
 
-import { useEffect, useContext } from "react";
+// import { useEffect, useContext } from "react";
 import Add from "./components/Add/Add";
 import Display from "./components/Display/Display";
-import TreeMap from "./components/Tree/TreeMap";
-import { map } from "./Class/Tree";
+// import TreeMap from "./components/Tree/TreeMap";
+import Tree from "./components/Tree/Tree";
+
+// import { map } from "./Class/Tree";
 export default function App(params) {
   return (
-    <MapContextProvider>
+    <TreeContextProvider>
       <ElementContextProvider>
         <div className="flex ">
-          <TreeMap />
+          <Tree />
           <Display />
           <Add />
         </div>
       </ElementContextProvider>
-    </MapContextProvider>
+    </TreeContextProvider>
   );
 }
